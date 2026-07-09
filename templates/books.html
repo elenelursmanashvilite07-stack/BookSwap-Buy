@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h1 class="text-center mb-5">📚 ხელმისაწვდომი წიგნები</h1>
+
+    {% if books %}
+
+    <div class="row">
+
+        {% for book in books %}
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card shadow h-100">
+
+                <div class="card-body">
+
+                    {% if book.image %}
+
+                    <img src="{{ url_for('static', filename='uploads/' + book.image) }}"
+                         class="card-img-top"
+                         style="height:300px; object-fit:cover;">
+
+                    {% endif %}
+
+                    <h4 class="card-title">
+                        {{ book.title }}
+                    </h4>
+
+                    <p class="card-text">
+                        ✍️ <strong>ავტორი:</strong> {{ book.author }}
+                    </p>
+
+                    <p>
+                        📚 <strong>ჟანრი:</strong> {{ book.genre }}
+                    </p>
+
+                    <p>
+                        ⭐ <strong>მდგომარეობა:</strong> {{ book.condition }}
+                    </p>
+
+                    <p>
+                        📝 {{ book.description }}
+                    </p>
+
+                    <p class="card-text">
+                        💰 <strong>ფასი:</strong> {{ book.price }} ₾
+                    </p>
+
+                </div>
+
+                <div class="card-footer bg-white">
+
+                    <div class="d-grid gap-2">
+
+                        <a href="/book/{{ book.id }}"
+                           class="btn btn-success w-100">
+                            დეტალურად / ყიდვა
+                        </a>
+
+                        {% if current_user.is_authenticated and (current_user.is_admin or current_user.id == book.user_id) %}
+
+                        <a href="/edit-book/{{ book.id }}"
+                           class="btn btn-warning w-100 mt-2">
+                            ✏️ რედაქტირება
+                        </a>
+
+                        <a href="/delete-book/{{ book.id }}"
+                           class="btn btn-danger w-100 mt-2">
+                            🗑️ წაშლა
+                        </a>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <div class="alert alert-info text-center">
+        ჯერ არცერთი წიგნი არ არის დამატებული.
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

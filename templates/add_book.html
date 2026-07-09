@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="card shadow">
+
+                <div class="card-body">
+
+                    <h1>{{ title }}</h1>
+
+                    <form method="POST" enctype="multipart/form-data">
+
+                        {{ form.hidden_tag() }}
+
+                        <div class="mb-3">
+                            {{ form.title.label(class="form-label") }}
+                            {{ form.title(class="form-control") }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.author.label(class="form-label") }}
+                            {{ form.author(class="form-control") }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.genre.label(class="form-label") }}
+                            {{ form.genre(class="form-select") }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.condition.label(class="form-label") }}
+                            {{ form.condition(class="form-select") }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.description.label(class="form-label") }}
+                            {{ form.description(class="form-control", rows="4") }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.price.label(class="form-label") }}
+                            {{ form.price(class="form-control") }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.image.label(class="form-label") }}
+                            {{ form.image(class="form-control") }}
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">
+                                {{ button }}
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+body{
+    background-color:#f8f9fa;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+element.style {
+}
+
+main{
+    flex:1;
+}
+
+.card{
+    transition:0.3s;
+    border:none;
+}
+
+.card:hover{
+    transform:scale(1.03);
+}
+
+.footer{
+    background:#212529;
+    color:white;
+    padding:30px 0;
+    margin-top:auto;
+}
+
+.btn{
+    border-radius:12px;
+}
+
+.card-img-top{
+    height:300px;
+    object-fit:cover;
+}
+
+.navbar-brand{
+    font-weight:bold;
+    font-size:25px;
+}
+
+.nav-link:hover{
+    color:#ffc107 !important;
+}
+
+.hero{
+    color:black;
+    padding:70px 0;
+}
+
+.hero h1{
+    color:black;
+}
